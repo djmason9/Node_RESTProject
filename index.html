@@ -1,0 +1,53 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        
+<script>
+var ROOTURL = "http://localhost:8081";
+
+$(document).ready(function() {
+
+	$.ajax({
+		crossDomain: true,
+		dataType : "json",
+		url: ROOTURL + "/listUsers",
+		success: function(data) {
+			$.each(data, function(i) {
+				$('.userName').append("<li>" + data[i].user + "</li>");
+			});
+		 
+		}
+	});
+
+
+	$("button").click(function(){
+		addUser();
+	});
+
+
+});
+
+function addUser(){
+
+	var myData = {
+        "userName": $("#userName").val(),
+        "fName": $("#fName").val(),
+        "lName": $("#lName").val()
+    	};
+    	
+    $.post( ROOTURL + "/addUser", 
+    	myData, 
+    	function( data ) {    	
+			console.log(data);;
+		});
+	
+}
+</script>
+<body>
+	<ul class="userName"></ul>
+	UserName:</br> <input type="text" id="userName"/></br>
+	F Name: </br><input type="text" id="fName"/></br>
+	L Name: </br><input type="text" id="lName"/></br>
+	</br>
+	<button>Add user</button>
+</body>
+</html>
