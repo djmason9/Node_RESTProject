@@ -1,8 +1,8 @@
-# Node_RESTProject
+### Node RESTProject
 
 Simple Node.js REST API allows you to create and list users from a sqlite3 database using node.js
 
-####Requirements:####
+####Requirements:
 install node.js
 ```
 $ npm install express
