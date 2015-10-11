@@ -10,3 +10,4 @@ $ npm install express
 $ npm install body-parser
 ```
 You will need a web server for the index.html to run. This uses 8081 port for the node res service.
+Put the index.html in the root of your web server and put the rest.js file in what ever directory you intall express and body-parser in.
