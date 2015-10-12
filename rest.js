@@ -3,8 +3,7 @@ var bodyParser = require('body-parser');
 
 var app = express();
 var jsonParser = bodyParser.json();
-// create application/x-www-form-urlencoded parser 
-// var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 	app.use(bodyParser.urlencoded({ extended: false }));
 	
 var DBNAME ="socialQuiz.db"
@@ -40,9 +39,7 @@ app.post('/addUser', jsonParser, function (req, res){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     
-    if (!req.body) return res.sendStatus(400)
-// 	create user in req.body 
-//	res.send('Welcome, ' + req.body.userName);  	
+    if (!req.body) return res.sendStatus(400);
 
   	addUser(req,res);
 

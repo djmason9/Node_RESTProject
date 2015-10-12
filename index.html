@@ -1,6 +1,9 @@
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <style>
+	body{
+		font-family:sans-serif;
+	}
 	li,ul{
 		list-style:none;
 		padding:0;
@@ -12,6 +15,12 @@
 	}
 	.formBlock{
 		clear:both;
+	}
+	button, input{
+		width:125px;
+		height:30px;
+		font-size:16px;
+		margin-bottom:10px;
 	}
 </style>
 <script>
@@ -59,9 +68,9 @@ function addUser(){
 <body>
 	<ul class="userName"></ul>
 	<div class="formBlock">
-	UserName:</br> <input type="text" id="userName"/></br>
-	F Name: </br><input type="text" id="fName"/></br>
-	L Name: </br><input type="text" id="lName"/></br>
+	User Name:</br> <input type="text" id="userName"/></br>
+	First Name: </br><input type="text" id="fName"/></br>
+	Last Name: </br><input type="text" id="lName"/></br>
 	</br>
 	<button>Add user</button>
 	</div>
