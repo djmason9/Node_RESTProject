@@ -1,7 +1,21 @@
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        
+<style>
+	li,ul{
+		list-style:none;
+		padding:0;
+	}
+	li{
+		float:left;
+		margin:10px;
+		text-align:center;
+	}
+	.formBlock{
+		clear:both;
+	}
+</style>
 <script>
+
 var ROOTURL = "http://localhost:8081";
 
 $(document).ready(function() {
@@ -12,7 +26,7 @@ $(document).ready(function() {
 		url: ROOTURL + "/listUsers",
 		success: function(data) {
 			$.each(data, function(i) {
-				$('.userName').append("<li>" + data[i].user + "</li>");
+				$('.userName').append("<li><img src='" + data[i].avatar+ "' width='50'/><br/>" + data[i].user + "</li>");
 			});
 		 
 		}
@@ -37,17 +51,19 @@ function addUser(){
     $.post( ROOTURL + "/addUser", 
     	myData, 
     	function( data ) {    	
-			console.log(data);;
+			$('.userName').append("<li>" + data + "</li>");
 		});
 	
 }
 </script>
 <body>
 	<ul class="userName"></ul>
+	<div class="formBlock">
 	UserName:</br> <input type="text" id="userName"/></br>
 	F Name: </br><input type="text" id="fName"/></br>
 	L Name: </br><input type="text" id="lName"/></br>
 	</br>
 	<button>Add user</button>
+	</div>
 </body>
 </html>

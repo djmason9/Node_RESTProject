@@ -17,13 +17,13 @@ db.serialize(function() {
 
 	db.run("DROP TABLE if exists social_details");
 	//create tables
-  	db.run("CREATE TABLE if not exists social_details (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT,fName TEXT,lName TEXT)");
+  	db.run("CREATE TABLE if not exists social_details (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT,fName TEXT,lName TEXT, avatar TEXT)");
 
 	//insert some stuff
-	db.run("INSERT INTO social_details('user','fName','lName') VALUES ('djmason9','Darren','Mason')");
-	db.run("INSERT INTO social_details('user','fName','lName') VALUES ('tdog','Todd','Thompson')");
-	db.run("INSERT INTO social_details('user','fName','lName') VALUES ('rj','Rijad','Dizdarevic')");
-	db.run("INSERT INTO social_details('user','fName','lName') VALUES ('pauly','Paul','Deisinger')");
+	db.run("INSERT INTO social_details('user','fName','lName','avatar') VALUES ('djmason9','Darren','Mason','https://avatars1.githubusercontent.com/u/327110')");
+	db.run("INSERT INTO social_details('user','fName','lName','avatar') VALUES ('tdog','Todd','Thompson','http://www.air-cosmos.com/img/unknown-avatar.png')");
+	db.run("INSERT INTO social_details('user','fName','lName','avatar') VALUES ('rj','Rijad','Dizdarevic','http://www.air-cosmos.com/img/unknown-avatar.png')");
+	db.run("INSERT INTO social_details('user','fName','lName','avatar') VALUES ('pauly','Paul','Deisinger','http://www.air-cosmos.com/img/unknown-avatar.png')");
 	
 	//select and loop results
 	db.each("SELECT  id,user from social_details", function(err, row) {
@@ -77,7 +77,7 @@ function addUser(req,res){
 	
 	db.serialize(function() {
 		db.run("INSERT INTO social_details('user','fName','lName') VALUES ('" + body.userName + "','" + body.fName + "','" + body.lName + "')");
-		res.send("User added");
+		res.send(body.userName);
 	});
 	
 	db.close();
@@ -89,7 +89,7 @@ function callDb(res){
 	
 	db.serialize(function() {
 
-		db.all("SELECT  user from social_details", function(err, rows) {  		
+		db.all("SELECT  user, avatar from social_details", function(err, rows) {  		
 			res.send( JSON.stringify(rows));
 		});
   
